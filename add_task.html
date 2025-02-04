@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        .error-border {
+            border: 2px solid red !important;
+        }
+        .success-border {
+            border: 2px solid green !important;
+        }
+        input[type="date"]::-webkit-inner-spin-button,
+        input[type="date"]::-webkit-clear-button {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow p-3 mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">MyApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Add Task</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Task Form Container -->
+    <div class="container">
+        <div class="card shadow mb-4">
+            <div class="card-header">
+                <h5 class="card-title">Add New Task</h5>
+            </div>
+            <div class="card-body">
+                <form id="addTaskForm" class="needs-validation" novalidate>
+                    <!-- Category Selection -->
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category" name="category" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="Development">Development</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Design">Design</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a category.</div>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter task title" required pattern="^[a-zA-Z ]+$">
+                        <div class="invalid-feedback">Title is required and must not contain special characters or numbers.</div>
+                    </div>
+
+                    <!-- Memo -->
+                    <div class="mb-3">
+                        <label for="memo" class="form-label">Memo</label>
+                        <textarea class="form-control" id="memo" name="memo" rows="3" maxlength="250" placeholder="Optional task description (max 250 characters)"></textarea>
+                    </div>
+
+                    <!-- Assigned Date -->
+                    <div class="mb-3">
+                        <label for="assignedDate" class="form-label">Assigned Date</label>
+                        <input type="date" class="form-control" id="assignedDate" name="assignedDate" required pattern="\d{4}-\d{2}-\d{2}">
+                        <div class="invalid-feedback">Please provide a valid assigned date.</div>
+                    </div>
+
+                    <!-- Due Date -->
+                    <div class="mb-3">
+                        <label for="dueDate" class="form-label">Due Date</label>
+                        <input type="date" class="form-control" id="dueDate" name="dueDate" required pattern="\d{4}-\d{2}-\d{2}">
+                        <div class="invalid-feedback">Please provide a valid due date.</div>
+                    </div>
+
+                    <!-- Assigned By -->
+                    <div class="mb-3">
+                        <label for="assignedBy" class="form-label">Assigned By</label>
+                        <input list="assignedByOptions" class="form-control" id="assignedBy" name="assignedBy" placeholder="Enter or select a name">
+                        <datalist id="assignedByOptions">
+                            <option value="John Doe">
+                            <option value="Jane Smith">
+                            <option value="Michael Brown">
+                        </datalist>
+                    </div>
+
+                    <!-- Assigned To -->
+                    <div class="mb-3">
+                        <label for="assignedTo" class="form-label">Assigned To</label>
+                        <input list="assignedToOptions" class="form-control" id="assignedTo" name="assignedTo" placeholder="Enter or select a name" required>
+                        <datalist id="assignedToOptions">
+                            <option value="Alice Green">
+                            <option value="Bob Williams">
+                            <option value="David Lee">
+                        </datalist>
+                        <div class="invalid-feedback">Please provide the name of the person assigned to this task.</div>
+                    </div>
+
+                    <!-- Priority Level -->
+                    <div class="mb-3">
+                        <label for="priority" class="form-label">Priority Level</label>
+                        <select class="form-select" id="priority" name="priority" required>
+                            <option value="" disabled selected>Select priority level</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a priority level.</div>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-select" id="status" name="status" required>
+                            <option value="" disabled selected>Select task status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Doing">Doing</option>
+                            <option value="Hold">Hold</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a task status.</div>
+                    </div>
+
+                    <!-- Form Buttons -->
+                    <div class="d-flex justify-content-end">
+                        <button type="reset" class="btn btn-secondary me-2">Reset</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Custom Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Form validation script
+        (function() {
+            'use strict';
+            const form = document.querySelector('#addTaskForm');
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management Dashboard</title>
+    <!-- Link to Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Styles (Optional, reuse if needed) -->
+    <style>
+        .shadow {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow p-4 flex justify-between items-center">
+        <div class="text-xl font-bold">MyApp</div>
+        <div class="flex space-x-6">
+            <a href="#" class="text-gray-700 hover:text-blue-500">About</a>
+            <a href="#" class="text-gray-700 hover:text-blue-500">Contact</a>
+            <div class="relative">
+                <button id="profile-menu" class="text-gray-700 hover:text-blue-500">Profile &#9662;</button>
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white border rounded shadow">
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Change Account</a>
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search and Filters -->
+    <div class="container mx-auto mt-6 p-4 bg-white shadow rounded">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <!-- Search Bar -->
+            <input type="text" class="form-input p-2 border rounded" placeholder="Search tasks...">
+            <!-- Category Dropdown -->
+            <select class="form-select p-2 border rounded">
+                <option selected>Category</option>
+                <option>AR</option>
+                <option>AP</option>
+                <option>QBO</option>
+                <option>Remaining</option>
+            </select>
+            <!-- Employee Dropdown -->
+            <select class="form-select p-2 border rounded">
+                <option selected>Employee</option>
+                <option>John Doe</option>
+                <option>Jane Smith</option>
+                <option>Michael Brown</option>
+            </select>
+            <!-- Date Picker -->
+            <input type="date" class="form-input p-2 border rounded">
+        </div>
+    </div>
+
+    <!-- Task Sections -->
+    <!-- AR Section -->
+    <div class="container mx-auto mt-6 space-y-4">
+        <div class="bg-white shadow rounded">
+            <div class="p-4 flex justify-between items-center cursor-pointer" onclick="toggleSection('ar-section')">
+                <h3 class="font-bold text-lg">AR</h3>
+                <span>&#9660;</span>
+            </div>
+            <div id="ar-section" class="hidden p-4">
+                <table class="table-auto w-full border-collapse border border-gray-200">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="border p-2">ID</th>
+                            <th class="border p-2">Title</th>
+                            <th class="border p-2">Memo</th>
+                            <th class="border p-2">Assigned Date</th>
+                            <th class="border p-2">Assigned By</th>
+                            <th class="border p-2">Due Date</th>
+                            <th class="border p-2">Assigned To</th>
+                            <th class="border p-2">Priority Level</th>
+                            <th class="border p-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">1</td>
+                            <td class="border p-2">Invoice Processing</td>
+                            <td class="border p-2">Process monthly invoices</td>
+                            <td class="border p-2">2025-01-01</td>
+                            <td class="border p-2">John Doe</td>
+                            <td class="border p-2">2025-01-10</td>
+                            <td class="border p-2">Jane Smith</td>
+                            <td class="border p-2">High</td>
+                            <td class="border p-2">Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- AP Section -->
+        <div class="bg-white shadow rounded">
+            <div class="p-4 flex justify-between items-center cursor-pointer" onclick="toggleSection('ap-section')">
+                <h3 class="font-bold text-lg">AP</h3>
+                <span>&#9660;</span>
+            </div>
+            <div id="ap-section" class="hidden p-4">
+                <table class="table-auto w-full border-collapse border border-gray-200">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="border p-2">ID</th>
+                            <th class="border p-2">Title</th>
+                            <th class="border p-2">Memo</th>
+                            <th class="border p-2">Assigned Date</th>
+                            <th class="border p-2">Assigned By</th>
+                            <th class="border p-2">Due Date</th>
+                            <th class="border p-2">Assigned To</th>
+                            <th class="border p-2">Priority Level</th>
+                            <th class="border p-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">2</td>
+                            <td class="border p-2">Vendor Payments</td>
+                            <td class="border p-2">Process payments to vendors</td>
+                            <td class="border p-2">2025-01-02</td>
+                            <td class="border p-2">Alice Brown</td>
+                            <td class="border p-2">2025-01-15</td>
+                            <td class="border p-2">Bob Williams</td>
+                            <td class="border p-2">Medium</td>
+                            <td class="border p-2">Doing</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- QBO Section -->
+        <div class="bg-white shadow rounded">
+            <div class="p-4 flex justify-between items-center cursor-pointer" onclick="toggleSection('qbo-section')">
+                <h3 class="font-bold text-lg">QBO</h3>
+                <span>&#9660;</span>
+            </div>
+            <div id="qbo-section" class="hidden p-4">
+                <table class="table-auto w-full border-collapse border border-gray-200">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="border p-2">ID</th>
+                            <th class="border p-2">Title</th>
+                            <th class="border p-2">Memo</th>
+                            <th class="border p-2">Assigned Date</th>
+                            <th class="border p-2">Assigned By</th>
+                            <th class="border p-2">Due Date</th>
+                            <th class="border p-2">Assigned To</th>
+                            <th class="border p-2">Priority Level</th>
+                            <th class="border p-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">3</td>
+                            <td class="border p-2">Reconciliation</td>
+                            <td class="border p-2">Reconcile accounts in QBO</td>
+                            <td class="border p-2">2025-01-03</td>
+                            <td class="border p-2">Charlie Adams</td>
+                            <td class="border p-2">2025-01-20</td>
+                            <td class="border p-2">David Lee</td>
+                            <td class="border p-2">Low</td>
+                            <td class="border p-2">Hold</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- JavaScript for toggling sections -->
+<script>
+    function toggleSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        section.classList.toggle('hidden');
+    }
+
+    // Profile dropdown toggle
+    document.getElementById('profile-menu').addEventListener('click', function () {
+        const dropdown = document.getElementById('profile-dropdown');
+        dropdown.classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>
+
