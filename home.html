@@ -11,6 +11,33 @@
         .shadow {
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .icon-container {
+            position: relative;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .icon-container:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip {
+            visibility: hidden;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            border-radius: 4px;
+            position: absolute;
+            z-index: 1;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -29,6 +56,27 @@
             </div>
         </div>
     </nav>
+
+    <!-- Add Task and Icons -->
+    <div class="container mx-auto mt-4 flex justify-between items-center">
+        <a href="add_task.html" class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">Add Task</a>
+        <div class="flex items-center">
+            <!-- Print Icon -->
+            <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700 hover:text-blue-500 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16v4h8v-4m-4 4V12m6 0h.01M18 16H6a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v7a2 2 0 01-2 2z" />
+                </svg>
+                <div class="tooltip">Print</div>
+            </div>
+            <!-- Export Icon -->
+            <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700 hover:text-blue-500 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 7l-5 5m0 0l5 5m-5-5h12M9 12H3" />
+                </svg>
+                <div class="tooltip">Export</div>
+            </div>
+        </div>
+    </div>
 
     <!-- Search and Filters -->
     <div class="container mx-auto mt-6 p-4 bg-white shadow rounded">
@@ -63,7 +111,7 @@
                 <h3 class="font-bold text-lg">AR</h3>
                 <span>&#9660;</span>
             </div>
-            <div id="ar-section" class="hidden p-4">
+            <div id="ar-section" class="hidden p-4 table-responsive">
                 <table class="table-auto w-full border-collapse border border-gray-200">
                     <thead>
                         <tr class="bg-gray-100">
@@ -101,7 +149,7 @@
                 <h3 class="font-bold text-lg">AP</h3>
                 <span>&#9660;</span>
             </div>
-            <div id="ap-section" class="hidden p-4">
+            <div id="ap-section" class="hidden p-4 table-responsive">
                 <table class="table-auto w-full border-collapse border border-gray-200">
                     <thead>
                         <tr class="bg-gray-100">
@@ -139,7 +187,7 @@
                 <h3 class="font-bold text-lg">QBO</h3>
                 <span>&#9660;</span>
             </div>
-            <div id="qbo-section" class="hidden p-4">
+            <div id="qbo-section" class="hidden p-4 table-responsive">
                 <table class="table-auto w-full border-collapse border border-gray-200">
                     <thead>
                         <tr class="bg-gray-100">
@@ -172,21 +220,18 @@
         </div>
     </div>
 
-</div>
+    <!-- JavaScript for toggling sections -->
+    <script>
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('hidden');
+        }
 
-<!-- JavaScript for toggling sections -->
-<script>
-    function toggleSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        section.classList.toggle('hidden');
-    }
-
-    // Profile dropdown toggle
-    document.getElementById('profile-menu').addEventListener('click', function () {
-        const dropdown = document.getElementById('profile-dropdown');
-        dropdown.classList.toggle('hidden');
-    });
-</script>
+        // Profile dropdown toggle
+        document.getElementById('profile-menu').addEventListener('click', function () {
+            const dropdown = document.getElementById('profile-dropdown');
+            dropdown.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>
-
