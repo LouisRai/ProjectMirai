@@ -495,18 +495,45 @@
                                                   TaskQ1: Creating Invoices for Landscape Contracts
                                               </button>
                                           </h2>
-                                          <div id="taskQ1" class="accordion-collapse collapse show" aria-labelledby="taskQ1Header" data-bs-parent="#qboTasks">
-                                              <div class="accordion-body bg-light">
-                                                  <h5 class="text-secondary fw-bold">Steps:</h5>
-                                                  <ol class="mb-3 text-dark">
-                                                      <li>Gather customer details and services from LMN.</li>
-                                                      <li>Create or copy an invoice in QBO.</li>
-                                                      <li>Verify invoice accuracy before sending.</li>
-                                                  </ol>
-                                                  <h5 class="text-secondary fw-bold">Relation:</h5>
-                                                  <p class="mb-0 text-dark">LMN: Feeding job and time data.<br>AR: Billing customers based on completed work.</p>
-                                              </div>
-                                          </div>
+                                          <div id="taskAR1" class="accordion-collapse collapse show" aria-labelledby="taskAR1Header" data-bs-parent="#arTasks">
+                                            <div class="accordion-body bg-light">
+                                                <h5 class="text-secondary fw-bold">Steps:</h5>
+                                                <ol class="mb-3 text-dark">
+                                                    <li>Ensure Timesheet Submission:
+                                                        <ul>
+                                                            <li>Confirm that all timesheets are submitted.</li>
+                                                            <li>Clear out any pending job not in the system.</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>Run Job Report:
+                                                        <ul>
+                                                            <li>Generate the job report as per the requirement (specific month, customer, or job).</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>Check Estimates:
+                                                        <ul>
+                                                            <li>Review estimates for each job to ensure that all times align with the calculated estimates.</li>
+                                                            <li>Verify that the amounts are correct for billing.</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>Create Invoice in QuickBooks:
+                                                        <ul>
+                                                            <li>Log into QuickBooks and create an invoice.</li>
+                                                            <li>Ensure the customer and job site are correctly mentioned.</li>
+                                                            <li>Include detailed job information in the description box.</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>Verification and Sending:
+                                                        <ul>
+                                                            <li>Verify the invoice details with Chris.</li>
+                                                            <li>Send the invoice to the customer once verified.</li>
+                                                        </ul>
+                                                    </li>
+                                                </ol>
+                                                <h5 class="text-secondary fw-bold">Relation:</h5>
+                                                <p class="mb-0 text-dark">LMN: Creating an Estimate from Job and Time Data.<br>QBO: Creating Invoice from the estimate.</p>
+                                            </div>
+                                        </div>
                                       </div>
                   
                                       <!-- Task 2 -->
